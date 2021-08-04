@@ -1,2 +1,4 @@
 # react-boilerplate
-React multipurpose boilerplates
+clone it 
+run "yarn"
+run "yarn start" 
