@@ -8,13 +8,16 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
+        publicPath: "/"
       },
       performance: {
         hints: false,
         maxEntrypointSize: 512000,
         maxAssetSize: 512000
     },
-    devServer: { port: "8000" },
+    devServer: { port: "8000",    
+    //  historyApiFallback: true, 
+},
     module: {
         rules: [
             {
