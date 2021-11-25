@@ -1,9 +1,9 @@
-# react-boilerplate
-clone it 
-run "yarn"
-run "yarn start" 
+# react-boilerplate <br/>
+clone it  <br/>
+run "yarn"  <br/>
+run "yarn start" <br/>  <br/>
 
-branches
-main
-react-route
-react-typescript
+branches  <br/>
+"main" <br/>
+"react-route"  <br/>
+"react-typescript" <br/>
