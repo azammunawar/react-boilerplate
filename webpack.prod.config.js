@@ -5,7 +5,7 @@ const path = require("path");
 module.exports = merge(common, {
   mode: "production",
   devServer: {
-    port: "8000",
+    port: "80",
     historyApiFallback: true,
     inline: true,
     publicPath: "dist/",
