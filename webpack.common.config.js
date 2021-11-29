@@ -1,11 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const LoadablePlugin = require("@loadable/webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
-  mode: "development",
   entry: path.join(__dirname, "src", "index.tsx"),
   output: {
-    filename: "bundle.js",
+    filename: "[name].[hash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
     publicPath: "/",
@@ -17,12 +19,26 @@ module.exports = {
       pages: path.resolve(__dirname, "./src/pages"),
     },
   },
+  cache: true,
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-  devServer: { port: "8000", historyApiFallback: true },
+  optimization: {
+    runtimeChunk: {
+      name: "commons",
+    },
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: {
+          sourceMap: false,
+          // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+        },
+      }),
+    ],
+  },
   module: {
     rules: [
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
@@ -45,8 +61,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new LoadablePlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "index.html"),
+      template: path.join(__dirname, "./index.html"),
     }),
+    new CompressionPlugin(),
   ],
 };
