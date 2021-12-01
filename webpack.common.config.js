@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const LoadablePlugin = require("@loadable/webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   entry: path.join(__dirname, "src", "index.tsx"),
@@ -10,7 +11,7 @@ module.exports = {
     filename: "[name].[hash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: "/",
+    publicPath: "./",
   },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
