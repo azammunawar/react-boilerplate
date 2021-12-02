@@ -7,12 +7,6 @@ const webpack = require("webpack");
 
 module.exports = {
   entry: path.join(__dirname, "src", "index.tsx"),
-  output: {
-    filename: "[name].[hash].js",
-    path: path.resolve(__dirname, "dist"),
-    clean: true,
-    publicPath: "./",
-  },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
     alias: {
