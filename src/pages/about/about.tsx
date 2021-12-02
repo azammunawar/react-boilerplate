@@ -1,6 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
+import { StoreContext } from "store";
 
 const About = () => {
-  return <div>about pageeeeeeeeeeeeeeeeeeee</div>;
+  const {session : {user}} = useContext(StoreContext);
+  return <div>about  {user.name}</div>;
 };
 export default About;

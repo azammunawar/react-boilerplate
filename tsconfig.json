@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "allowJs": true,
     "baseUrl": "./src",
     "jsx": "react",
     "module": "commonjs",
