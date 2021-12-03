@@ -5,12 +5,6 @@ const Home = loadable(() => import("pages/home/home"));
 const About = loadable(() => import("pages/about/about"));
 const Users = loadable(() => import("pages/users/users"));
 
-interface routes {
-  path: string;
-  component: any;
-  exact: boolean;
-  isPublic?: boolean;
-}
 
 const routes: Array<routes> = [
   { path: "/about", component: About, exact: true, isPublic: true },

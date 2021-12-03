@@ -6,12 +6,12 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: path.join(__dirname, "src", "index.tsx"),
+  entry: path.join(__dirname,  "../src/index.tsx"),
   resolve: {
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
     alias: {
-      routes: path.resolve(__dirname, "./src/routes"),
-      pages: path.resolve(__dirname, "./src/pages"),
+      routes: path.resolve(__dirname, "../src/routes"),
+      pages: path.resolve(__dirname, "../src/pages"),
     },
   },
   cache: true,
@@ -58,7 +58,7 @@ module.exports = {
   plugins: [
     new LoadablePlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "./index.html"),
+      template: path.join(__dirname, "../index.html"),
     }),
     new CompressionPlugin(),
   ],
