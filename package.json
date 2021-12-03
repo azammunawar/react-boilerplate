@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config ./webpack.dev.config.js",
-    "build-serve": "webpack --config ./webpack.prod.config.js && webpack serve --config ./webpack.prod.config.js",
-    "build": "webpack --config ./webpack.prod.config.js"
+    "start": "webpack serve --config ./webpackConfig/webpack.dev.config.js",
+    "build-serve": "webpack --config ./webpackConfig/webpack.prod.config.js && webpack serve --config ./webpackConfig/webpack.prod.config.js",
+    "build": "webpack --config ./webpackConfig/webpackwebpack.prod.config.js"
   },
   "author": "",
   "license": "ISC",
