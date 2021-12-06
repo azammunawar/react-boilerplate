@@ -1,7 +1,4 @@
-
-import { action, observable, computed } from 'mobx';
-
-
+import { action, observable, computed } from "mobx";
 
 export class SessionStore {
   constructor() {}
@@ -10,37 +7,37 @@ export class SessionStore {
   /******************************************************************************
    *                                OBSERVABLES
    *****************************************************************************/
-  @observable public user: {name:string} = {name:"test"};
-
- 
+  @observable public isUser = false;
 
   /******************************************************************************
    *                                PRIVATE OPERATORS
    *****************************************************************************/
   // Returns true if Alert is post-midnight
-  private functionName = () => {
-   
+  login = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.updateUser();
+        resolve("user added");
+      }, 500);
+    });
   };
-
-
 
   /******************************************************************************
    *                           MOBX ASYNC TASKS
    *****************************************************************************/
   // Fetch list of Sites from backend services
-  
-
-  
 
   /******************************************************************************
    *                                ACTIONS
    *****************************************************************************/
+  @action
+  public updateUser = () => {
+    this.isUser = true;
+  };
   // Set the selected site (Site)
-  
 
   /******************************************************************************
    *                           COMPUTED PROPERTIES
    *****************************************************************************/
   // Returns Top Labels for Summary Content
-  
 }

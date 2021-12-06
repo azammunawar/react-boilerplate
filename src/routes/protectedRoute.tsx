@@ -7,23 +7,27 @@ import {
   Link,
   RouteComponentProps,
 } from "react-router-dom";
+import { StoreContext } from "store";
+
 interface IProps {
   path: string;
   Component: React.FC<RouteComponentProps>;
 }
 export const ProtectedRoute: React.FC<IProps> = ({ path, Component }) => {
-  let auth = false;
+  const {
+    session: { isUser },
+  } = React.useContext(StoreContext);
   return (
     <Route
       exact={true}
       path={path}
       render={(props: RouteComponentProps) =>
-        auth ? (
+        isUser ? (
           <Component {...props} />
         ) : (
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/users",
               state: { from: props.location },
             }}
           />

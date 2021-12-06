@@ -1,56 +1,129 @@
-import React, { Component } from "react";
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { StoreContext } from "store";
+import { Redirect } from "react-router-dom";
 
-const Users = () => {
-  import("ramda").then((ramda) => {
-    const result = ramda.map(ramda.identity, [1, 2, 6]);
-    console.log("user page loaded", result);
-  });
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>
+      {new Date().getFullYear()}
+    </Typography>
+  );
+}
+
+const theme = createTheme();
+
+export default function Users() {
+  const {
+    session: { login },
+  } = React.useContext(StoreContext);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    // eslint-disable-next-line no-console
+    console.log({
+      email: data.get("email"),
+      password: data.get("password"),
+    });
+    login().then(() => {
+      alert();
+      <Redirect to="/" />;
+    });
+  };
 
   return (
-    <>
-      <div>Users page</div>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet
-        sagittis orci, fermentum pharetra lacus hendrerit quis. Sed eu sem sed
-        est tincidunt dignissim porttitor non velit. Proin ullamcorper a arcu id
-        tristique. Phasellus tincidunt varius porttitor. Mauris malesuada ex
-        lorem, quis feugiat nisl vestibulum ac. Integer ullamcorper, quam id
-        dictum convallis, turpis justo dignissim turpis, vel egestas diam dui in
-        metus. Nullam mi nibh, bibendum eu semper et, consequat at mauris. Morbi
-        blandit tincidunt diam vel vulputate. Curabitur dui orci, pretium quis
-        viverra et, tempor ut tellus. Sed ut velit egestas, porta metus eu,
-        maximus ante. Sed auctor metus et venenatis interdum. Cras ac mauris eu
-        nisi euismod egestas et vel risus. Vestibulum gravida mollis sapien, sit
-        amet varius elit pharetra id. Duis vestibulum augue in est dictum
-        gravida. Vivamus id bibendum lorem. Nulla euismod tristique erat a
-        euismod. Vestibulum congue nisi vehicula pharetra blandit. Integer
-        tristique felis id sem mattis, eget facilisis urna sodales. Curabitur in
-        tincidunt dolor. In aliquet lectus malesuada nibh convallis porttitor
-        nec et nulla. Mauris malesuada turpis sit amet mattis volutpat. Sed
-        mattis, purus in tempor luctus, diam nunc auctor mauris, sit amet
-        scelerisque lorem mauris eu lorem. Mauris ac accumsan turpis, auctor
-        ornare odio. Vestibulum pulvinar vitae tellus id pellentesque. Praesent
-        eget libero eu nisi tempus accumsan. Maecenas ipsum ante, luctus quis
-        orci nec, tincidunt ultricies tortor. Maecenas tempus velit et velit
-        gravida, sit amet suscipit dui ornare. Curabitur ac sem malesuada,
-        posuere lacus id, sodales leo. Morbi dapibus quis lectus non
-        consectetur. Ut ut sollicitudin quam. Nunc semper finibus turpis ut
-        suscipit. Donec vitae augue scelerisque, placerat urna vel, feugiat
-        sapien. Fusce purus tortor, consequat eu varius in, porttitor et tortor.
-        Mauris ultrices nulla et turpis fringilla, eget pharetra nulla
-        porttitor. Nam vel ex a ligula efficitur tempus. Donec feugiat magna
-        urna, non placerat nulla posuere non. Cras vel dapibus dui, a convallis
-        leo. Sed dictum dignissim arcu consectetur feugiat. Nullam non diam
-        hendrerit augue condimentum scelerisque a quis dui. Quisque sed purus eu
-        augue pulvinar blandit non sit amet dui. Aenean orci augue, consectetur
-        eu odio nec, condimentum viverra nunc. Duis dolor nisl, sollicitudin eu
-        dolor eget, dignissim suscipit nisl. Integer tincidunt blandit purus,
-        nec maximus sem consequat in. Integer tempus a leo at rhoncus. Maecenas
-        cursus augue elit, ut consectetur mi convallis auctor. Nam vulputate
-        lorem luctus, scelerisque mi id, rhoncus ante. Generated 5 paragraphs,
-        392 words, 2617 byte
-      </div>
-    </>
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
   );
-};
-export default Users;
+}

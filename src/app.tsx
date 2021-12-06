@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./app.css";
 import routes from "routes/navigation";
 import { ProtectedRoute } from "routes/protectedRoute";
-import {StoreContext, store} from "store/index";
+import { StoreContext, store } from "store/index";
 import { Provider } from "mobx-react";
 
 export class App extends Component {
@@ -12,17 +12,17 @@ export class App extends Component {
       <Router>
         <StoreContext.Provider value={store}>
           <Provider {...store}>
-            <div className='test'>
+            <div className="test">
               <nav>
                 <ul>
                   <li>
-                    <Link to='/'>Home</Link>
+                    <Link to="/">Home</Link>
                   </li>
                   <li>
-                    <Link to='/about'>About</Link>
+                    <Link to="/about">About</Link>
                   </li>
                   <li>
-                    <Link to='/users'>Users</Link>
+                    <Link to="/users">Users</Link>
                   </li>
                 </ul>
               </nav>
@@ -44,7 +44,7 @@ export class App extends Component {
                 })}
               </Switch>
             </div>
-            </Provider>
+          </Provider>
         </StoreContext.Provider>
       </Router>
     );
