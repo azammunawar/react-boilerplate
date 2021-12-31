@@ -6,7 +6,7 @@ module.exports = merge(common, {
   mode: "production",
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
     clean: true,
     publicPath: "./",
   },
@@ -15,7 +15,7 @@ module.exports = merge(common, {
     // host: "0.0.0.0",
     historyApiFallback: true,
     inline: true,
-    publicPath: "dist/",
-    contentBase: path.join(__dirname, "dist"),
+    publicPath: "../dist/",
+    contentBase: path.join(__dirname, "../dist"),
   },
 });

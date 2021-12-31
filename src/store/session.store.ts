@@ -12,7 +12,6 @@ export class SessionStore {
   /******************************************************************************
    *                                PRIVATE OPERATORS
    *****************************************************************************/
-  // Returns true if Alert is post-midnight
   login = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
