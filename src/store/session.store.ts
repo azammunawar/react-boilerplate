@@ -1,17 +1,12 @@
-import { action, observable, computed } from "mobx";
+import { makeAutoObservable, set } from "mobx";
 
 export class SessionStore {
-  constructor() {}
-  private variableName = "";
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-  /******************************************************************************
-   *                                OBSERVABLES
-   *****************************************************************************/
-  @observable public isUser = false;
+  isUser = false;
 
-  /******************************************************************************
-   *                                PRIVATE OPERATORS
-   *****************************************************************************/
   login = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -21,22 +16,7 @@ export class SessionStore {
     });
   };
 
-  /******************************************************************************
-   *                           MOBX ASYNC TASKS
-   *****************************************************************************/
-  // Fetch list of Sites from backend services
-
-  /******************************************************************************
-   *                                ACTIONS
-   *****************************************************************************/
-  @action
-  public updateUser = () => {
-    this.isUser = true;
+  updateUser = () => {
+    this.isUser = !this.isUser;
   };
-  // Set the selected site (Site)
-
-  /******************************************************************************
-   *                           COMPUTED PROPERTIES
-   *****************************************************************************/
-  // Returns Top Labels for Summary Content
 }

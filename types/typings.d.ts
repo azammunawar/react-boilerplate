@@ -2,7 +2,7 @@ interface routes {
   path: string;
   component: any;
   exact: boolean;
-  isPublic?: boolean;
+  isPublic: boolean;
 }
 
 interface User {

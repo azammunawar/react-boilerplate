@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { StoreContext } from "store";
-import { Redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -35,6 +35,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Users() {
+  let navigate = useNavigate();
   const {
     session: { login },
   } = React.useContext(StoreContext);
@@ -47,8 +48,7 @@ export default function Users() {
       password: data.get("password"),
     });
     login().then(() => {
-      alert();
-      <Redirect to="/" />;
+      navigate("/");
     });
   };
 

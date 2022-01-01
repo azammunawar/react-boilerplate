@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./app.css";
-import routes from "routes/navigation";
+import navigation from "routes/navigation";
 import { ProtectedRoute } from "routes/protectedRoute";
 import { StoreContext, store } from "store/index";
 import { Provider } from "mobx-react";
@@ -26,23 +26,27 @@ export class App extends Component {
                   </li>
                 </ul>
               </nav>
-              <Switch>
-                {routes.map((route: any, index: any) => {
+              <Routes>
+                {navigation.map((route: any, index: any) => {
                   return route.isPublic ? (
                     <Route
                       key={route + index}
                       path={route.path}
-                      component={route.component}
+                      element={<route.component />}
                     />
                   ) : (
-                    <ProtectedRoute
+                    <Route
                       key={route + index}
                       path={route.path}
-                      Component={route.component}
+                      element={
+                        <ProtectedRoute>
+                          <route.component />
+                        </ProtectedRoute>
+                      }
                     />
                   );
                 })}
-              </Switch>
+              </Routes>
             </div>
           </Provider>
         </StoreContext.Provider>
