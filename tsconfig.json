@@ -1,22 +1,24 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
+    "strict": true,
     "allowJs": true,
+    "target": "es6",
     "baseUrl": "./src",
     "jsx": "react",
-    "module": "commonjs",
+    "module": "esnext",
     "noImplicitAny": false,
     "outDir": "./dist/",
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
-    "lib": ["es6", "dom"],
-    "typeRoots": ["./types/typings.d.ts"],
+    "lib": ["esnext", "dom"],
+    "moduleResolution": "node",
+    "typeRoots": ["node_modules/@types", "./types/typings.d.ts"],
     "esModuleInterop": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "noImplicitThis": true,
-    "allowSyntheticDefaultImports": true,
-  },
-
+    "allowSyntheticDefaultImports": true
+  }
 }

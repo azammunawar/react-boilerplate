@@ -1,22 +1,40 @@
-import { makeAutoObservable, set } from "mobx";
+import { action, autorun, makeAutoObservable } from "mobx";
+import { getToken, getUser, removeUser, setUser } from "utils/helper";
+import { login, authenticate } from "utils/api";
 
 export class SessionStore {
   constructor() {
     makeAutoObservable(this);
   }
 
-  isUser = false;
+  user: undefined | user = undefined;
 
-  login = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        this.updateUser();
-        resolve("user added");
-      }, 500);
-    });
+  login = () =>
+    login().then(
+      action("fetchSuccess", (res) => {
+        setUser(res.data);
+        this.user = res.data;
+      })
+    );
+
+  logout = () => {
+    this.user = undefined;
+    removeUser();
   };
 
-  updateUser = () => {
-    this.isUser = !this.isUser;
-  };
+  get isUser() {
+    return this.user !== undefined;
+  }
+
+  readonly authenticationAttempt = (async () => {
+    const storedToken = getToken();
+    const user = getUser();
+    if (storedToken) {
+      authenticate(storedToken).then(
+        action("fetchSuccess", () => {
+          this.user = user;
+        })
+      );
+    }
+  })();
 }

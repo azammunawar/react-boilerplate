@@ -1,20 +1,16 @@
-import React, { Component, useContext, useEffect } from "react";
-import { useStoreContext } from "store";
+import React from "react";
+import { useStoreContext } from "store/index";
 import { observer } from "mobx-react";
 
 const About: React.FC = observer(() => {
   const {
-    session: { isUser, updateUser },
+    session: { isUser },
   } = useStoreContext();
 
   return (
     <div>
-      <div
-        onClick={() => {
-          updateUser();
-        }}
-      >
-        {isUser ? "ture" : "false"}
+      <div onClick={() => {}}>
+        {/* {isUser ? "ture" : "false"} */}
         about page added now
       </div>
     </div>
