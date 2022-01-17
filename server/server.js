@@ -5,28 +5,7 @@ import React from "react";
 import ReactDOMServer from "react-dom/server";
 import compression from "compression";
 import cors from "cors";
-import { JssProvider, SheetsRegistry, createGenerateId } from "react-jss";
-// import Layout from "../src/components/layout";
-
-class MyComponent extends React.Component {
-  render() {
-    return (
-      <p>
-        In order to run react-mobx-ssr-starter follow these steps: clone
-        repository git clone
-        https://github.com/Nazar32/react-mobx-ssr-starter.git cd into directory
-        cd react-mobx-ssr-starter install packages npm i build client npm run
-        build:client build server npm run build:server start dev server npm
-        start open localhost:3000 in browser
-      </p>
-    );
-  }
-}
-export class login extends React.Component {
-  render() {
-    return <p>login</p>;
-  }
-}
+// import { JssProvider, SheetsRegistry, createGenerateId } from "react-jss";
 
 const app = express();
 app.use(compression());
@@ -72,8 +51,8 @@ app.use("/login", (req, res, next) => {
   });
 });
 
-const sheets = new SheetsRegistry();
-const generateId = createGenerateId();
+// const sheets = new SheetsRegistry();
+// const generateId = createGenerateId();
 // const body = ReactDOMServer.renderToString(
 //   <JssProvider registry={sheets} generateId={generateId}>
 //     <Layout />
