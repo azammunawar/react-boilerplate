@@ -1,5 +1,5 @@
-import React, { lazy } from "react";
-import loadable from "@loadable/component";
+import React from "react";
+// import loadable from "@loadable/component";
 import Home from "pages/home/home";
 
 // const Home = loadable(async () => import("pages/home/home"));
