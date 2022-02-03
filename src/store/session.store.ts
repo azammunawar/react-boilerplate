@@ -1,4 +1,4 @@
-import { action, autorun, makeAutoObservable } from "mobx";
+import { action, makeAutoObservable } from "mobx";
 import { getToken, getUser, removeUser, setUser } from "utils/helper";
 import { login, authenticate } from "utils/api";
 
@@ -31,7 +31,7 @@ export class SessionStore {
     const user = getUser();
     if (storedToken) {
       authenticate(storedToken).then(
-        action("fetchSuccess", () => {
+        action("fetchSucces", () => {
           this.user = user;
         })
       );

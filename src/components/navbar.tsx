@@ -16,11 +16,11 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { StoreContext } from "store";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-interface IProps {
-  onClick: () => void;
-}
+// interface IProps {
+//   onClick: () => void;
+// }
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -61,11 +61,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+// eslint-disable-next-line react/prop-types
 export default function Navbar({ onClick }) {
   const {
     session: { logout },
   } = React.useContext(StoreContext);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =

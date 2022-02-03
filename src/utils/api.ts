@@ -1,5 +1,5 @@
 import * as request from "superagent";
-import { getToken, unauthorizedRedirect } from "./helper";
+import { unauthorizedRedirect } from "./helper";
 const baseURl = "http://localhost:3001";
 
 export const login = () =>
@@ -10,11 +10,9 @@ export const login = () =>
       password: "azam",
     })
     .then((response) => {
-      console.log(response);
       return response.body;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     });
 
@@ -24,10 +22,8 @@ export const authenticate = (token) =>
     .set("Authorization", `Bearer ${token}`)
     .use(unauthorizedRedirect)
     .then((response) => {
-      console.log(response);
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
       return error;
     });
