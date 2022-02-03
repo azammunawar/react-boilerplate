@@ -68,7 +68,7 @@ app.use("*", (req, res) => {
   });
 });
 
-app.listen(80, () => {
+app.listen(process.env.PORT || 3000, () => {
   // eslint-disable-next-line no-console
   console.log("runing on 3001");
 });
