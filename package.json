@@ -10,7 +10,8 @@
     "build": "webpack --config ./webpackConfig/webpack.prod.config.js",
     "test": "jest --config ./jest.config.json --coverage",
     "lint": "npx eslint ./src/**/*.ts*",
-    "lint:fix": "npx eslint ./src/**/*.ts* --fix"
+    "lint:fix": "npx eslint ./src/**/*.ts* --fix",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
