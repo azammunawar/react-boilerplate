@@ -68,7 +68,7 @@ app.use("*", (req, res) => {
   });
 });
 
-app.listen(3001, () => {
+app.listen(80, () => {
   // eslint-disable-next-line no-console
   console.log("runing on 3001");
 });
