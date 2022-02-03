@@ -31,7 +31,7 @@ export class SessionStore {
     const user = getUser();
     if (storedToken) {
       authenticate(storedToken).then(
-        action("fetchSucces", () => {
+        action("fetchSuccess", () => {
           this.user = user;
         })
       );
