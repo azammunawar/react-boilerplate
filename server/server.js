@@ -14,7 +14,6 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, "..", "dist")));
 app.use(express.json());
 app.post("/login", function (req, res) {
-  console.log("req", req.body);
   if (req.body.username === "azam" && req.body.password === "azam") {
     res.status(200).send({
       status: 200,
@@ -30,14 +29,13 @@ app.post("/login", function (req, res) {
 });
 
 app.post("/authenticate", function (req, res) {
-  console.log("req", req.headers);
   if (req.headers.authorization === "Bearer UbpN3vSsWtQehzs70VCcAcyNMkTyoan") {
     res.status(200).send("user is authenticated");
   }
   res.status(401).send("Authentication Failed");
 });
 
-app.use("/login", (req, res, next) => {
+app.use("/login", (req, res) => {
   fs.readFile(path.resolve("./dist/index.html"), "utf-8", (err, data) => {
     if (err) {
       return res.status(500).send("some error happened");
@@ -58,18 +56,19 @@ app.use("/login", (req, res, next) => {
 //     <Layout />
 //   </JssProvider>
 // );
-// app.use("*", (req, res, next) => {
-//   fs.readFile(path.resolve("../dist/index.html"), "utf-8", (err, data) => {
-//     if (err) {
-//       return res.status(500).send("some error happened");
-//     }
+app.use("*", (req, res) => {
+  fs.readFile(path.resolve("../dist/index.html"), "utf-8", (err, data) => {
+    if (err) {
+      return res.status(500).send("some error happened");
+    }
 
-//     return res.send(
-//       data.replace(`<div id="app"></div>`, `<div id="app">${body}</div>`)
-//     );
-//   });
-// });
+    return res.send(
+      data.replace(`<div id="app"></div>`, `<div id="app">${body}</div>`)
+    );
+  });
+});
 
 app.listen(3001, () => {
+  // eslint-disable-next-line no-console
   console.log("runing on 3001");
 });
