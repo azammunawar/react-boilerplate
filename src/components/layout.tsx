@@ -16,7 +16,7 @@ const Layout: React.FC = observer(() => {
     }
   }, [isUser]);
 
-  return <div>hello</div>;
+  return <div></div>;
 });
 
 export default Layout;

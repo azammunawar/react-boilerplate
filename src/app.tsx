@@ -6,7 +6,7 @@ import { ProtectedRoute } from "routes/protectedRoute";
 import { StoreContext, store } from "store/index";
 import { Provider } from "mobx-react";
 import { PublicRoute } from "routes/publicRoute";
-import Layout from "components/layout";
+// import Layout from "components/layout";
 
 export class App extends Component {
   render() {
@@ -15,7 +15,7 @@ export class App extends Component {
         <StoreContext.Provider value={store}>
           <Provider {...store}>
             <div className="test">
-              <Layout></Layout>
+              {/* <Layout></Layout> */}
               <React.Suspense fallback={<div />}>
                 <Routes>
                   {navigation.map((route: any, index: any) => {
