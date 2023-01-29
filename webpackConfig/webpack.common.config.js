@@ -1,9 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const LoadablePlugin = require("@loadable/webpack-plugin");
+// const LoadablePlugin = require("@loadable/webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-const webpack = require("webpack");
+// const webpack = require("webpack");
 const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
@@ -22,8 +22,8 @@ module.exports = {
   cache: true,
   performance: {
     hints: false,
-    // maxEntrypointSize: 512000,
-    // maxAssetSize: 512000,
+    maxEntrypointSize: 912000,
+    maxAssetSize: 912000,
   },
   optimization: {
     // splitChunks: {
@@ -77,12 +77,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../index.html"),
     }),
-    new WorkboxPlugin.GenerateSW({
-      // these options encourage the ServiceWorkers to get in there fast
-      // and not allow any straggling "old" SWs to hang around
-      clientsClaim: true,
-      skipWaiting: true,
-    }),
+    // new WorkboxPlugin.GenerateSW({
+    //   // these options encourage the ServiceWorkers to get in there fast
+    //   // and not allow any straggling "old" SWs to hang around
+    //   clientsClaim: true,
+    //   skipWaiting: true,
+    // }),
     new CompressionPlugin(),
   ],
 };
